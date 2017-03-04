@@ -1,0 +1,582 @@
+<!doctype html>
+<html class="no-js" lang="en" style="height: 100%;">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Orbit - David Yang</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700|Merriweather:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+  <body style="height: 100%;">
+
+  <section class="bauhaus-header">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+        <h1>Orbit</h1>
+        Case Study - VMware
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">The Problem</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        vSphere is VMware's main product. vSphere is a cloud computing OS that enables IT administrators to run Virtual Machines(VMs) on a connected pool of physical servers.
+        <br>
+        <br>
+        While vSphere makes it easy to rapidly configure and create VMs, the cloud scale makes performance monitoring and troubleshooting difficult.
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text research-point"  style="margin-top:0;">
+        The first line of defense: vSphere's built-in performance charts.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/performanceCharts.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        But our users had a hard time using these charts:
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-three explanation-text pullout-list-sm">
+        <ol>
+          <li>It was slow to load</li>
+          <li>Admins could see only one object(VM or Server) at a time</li>
+          <li>Most of the metrics shown are meaningless for troubleshooting</li>
+          <li>There is no guidance on good/bad metrics</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="container research-section">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text research-point"  style="margin-top:0;">
+        ESXTOP was a command line that experienced admins favored
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/esxtop.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        ESXTOP was extremely useful for power users. It showed vital metrics and was performant, but it also had similar shortcomings:
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-three explanation-text pullout-list-sm">
+        <ol>
+          <li>Admins needed to master the right commands</li>
+          <li>Admins still needed to know what to look for beforehand</li>
+          <li>Scale was an issue, ESXTOP could only connect to one physical server at a time</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <section class="orbit-excerpt">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two exercept">
+          As a vSphere Admin, I want to be told what is wrong with specific VM/Servers so I can begin remediation.
+          <br>
+          <br>
+          I need this information at scale and be given guidance on what to do.
+        </div>
+        <div class="eight columns offset-by-two exercept-attribute" style="text-align: center;">
+          Use Case
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Research</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h5 class="secondary-font process-title">Eat Dog Food</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        I started to dogfood vSphere in order to better understand our users' frustration.
+        The User Experience Team had its own datacenter managed by vSphere, so I volunteered to be an admin.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/dogFood.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        I ran databases and applications used for prototyping in vSphere. Our designers and UI developers had never gotten their hands dirty with the inner workings of vSphere, so I naturally turned to Google for help...
+      </div>
+    </div>
+  </div>
+
+
+  <section class="process-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h5 class="secondary-font process-title">Understanding the Technology</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        A sample of my Google search history:
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-three explanation-text pullout-list-sm">
+        <ul>
+          <li>What metrics matter in vSphere?</li>
+          <li>CPU ready vs CPU costop vs CPU wait</li>
+          <li>Memory Balloon?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        After parsing through dozens of blogs and articles, I realized that looking at VM performance in the traditional computing paradigm was erroneous.
+        <br>
+        <br>
+        In traditional computing, <strong>consumption</strong> was the key metric to look at. You needed to track CPU and memory consumption rates.
+        <br>
+        <br>
+        But vSphere dynamically allocated resources where needed. Consumption was fine, but <strong>contention</strong> for the same resources between VMs was bad.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/cpuReady.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-three explanation-text explanation-text-cutout">
+        Diagrams like this helped me understand why contention was at the root of most performance issues.
+      </div>
+    </div>
+  </div>
+
+  <section class="process-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h5 class="secondary-font process-title">Find Domain Experts</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        As I dived deeper into the world of virtualization, I came upon some brilliant vSphere experts.
+        <a href="http://www.yellow-bricks.com/">Duncan Epping</a> is a renowned "vExpert", and had compiled a list of important contention metrics:
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/ducanEpping2.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        His blog was a virtual goldmine <em>(pun intended)</em>.  Duncan laid out thresholds, explained possible causes and offered potential remediations.
+        <br>
+        <br>
+        I was surprised that none of this was baked into the current vSphere UI.
+        <br>
+        It was clear that I needed to build my prototype on top of this knowledge.
+      </div>
+    </div>
+  </div>
+
+
+  <section class="process-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h5 class="secondary-font process-title">Look for Designspiration</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        The next challenge was figuring out how to represent all this data at scale. It was common for admins to maintain environments with dozens of servers and thousands of VMs.
+        <br>
+        <br>
+        My mentor at VMware, <a href="http://www.gizmometer.com/blog/">Conrad Albrecht-Buehler</a>, had conducted his <a href="http://pqdtopen.proquest.com/doc/250829536.html?FMT=ABS">doctoral thesis</a> on situation awareness and monitoring. I spent a day going through his paper for insight.
+        <br>
+        <br>
+        His concept, called Heeds, centered on eliminating noise through dynamic thresholds. Conrad described two principal thresholds:
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-three explanation-text groundrules">
+        <ol>
+          <li>A lower threshold, where everything below can be ignored</li>
+          <li>An upper threshold, where everything above must be addressed</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/heeds.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        Heeds was perfect for our use case.
+        <br>
+        By eschewing a linear representation of vSphere metrics, I could reduce noise and bring attention to issues (current or potential).
+        Furthermore, Duncan already provided us with the thresholds for each metric.
+      </div>
+    </div>
+  </div>
+
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Visualization Design</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        Unfortunately, Orbit was never launched to the public and my deliverables are under NDA.
+        I cannot show the final prototype or the in-progress designs.
+        <br>
+        <br>
+        All is not lost! Let me explain the concept with my favorite two internet memes: <strong>Grumpy Cat</strong> & <strong>Advice Dog</strong>.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        <br>
+        Using the <em>Heeds</em> principle, we have two thresholds.
+      </div>
+    </div>
+    <div class="row">
+      <div class="seven columns offset-by-three explanation-text groundrules">
+        <ol>
+          <li>
+            Grumpy Cat represents the upper threshold: be above this and life is harsh.
+          </li>
+          <li>
+            Advice Dog represents the lower threshold: be below this and life is good!
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width" src="images/orbitViz1.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        I decided to eschew a timeline representation. The primary goal was to show datacenter health at the current moment. Thus, I could represent a VM (or Server) as a point across a single axis.
+        <br>
+        <br>
+        We had roughly a dozen metrics to track based on Duncan's best practices. I developed a weighted aggregation algorithm to map this multi-dimensional space into a single axis.
+        <br>
+        <br>
+        Scale was still a issue. As you start lining up hundreds of these <em>Heed Charts</em>, you run out of horizontal space.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width" src="images/orbitViz2.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        It gets difficult to fit the legions of Grumpy Cats and Advice Dogs in a limited screen space.
+        The design starts to get noisy.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width" src="images/orbitViz3.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        However, with some rearrangement magic, a radial orientation allows for a massive number of charts to be placed in a limited space.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width" src="images/orbitViz4.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        I minimized and dimmed <em>Advice-Dog-esque</em> VMs to reduce noise and increase readable informational density. There was no need to bring attention to VMs that were good.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width" src="images/orbitViz5.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        The good news was that this worked in perfect unison with the mathematical integrity of a circle: surface area increases exponentially relative to the radius.
+        <br>
+        <br>
+        The bad news was the focus on Grumpy Cat's negativity at the expense of Advice Dog's positivity. I guess that's just how the world spins.
+      </div>
+    </div>
+  </div>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Design Principles</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        To sum up the design in an equation:
+      </div>
+    </div>
+  </div>
+  <div class="container highlight-container">
+    <div class="row">
+      <div class="eight columns offset-by-two highlight-text">
+        Best practice metrics/thresholds
+        <br>
+        <span style="color: gray; font-weight: 400;">(Reduce Dimensionality)</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two highlight-text">
+        +
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two highlight-text">
+        Heeds
+        <br>
+        <span style="color: gray; font-weight: 400;">(Reduce Noise)</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two highlight-text">
+        +
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two highlight-text">
+        Radial Topography
+        <br>
+        <span style="color: gray; font-weight: 400;">(Increase Informational-Density)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        Furthermore, I found out that admins differ on acceptable thresholds based on the nature of their VM workloads.
+        <br>
+        <br>I added the feature to customize thresholds and filter on specific metrics. Duncan's values ensured that admins started with a solid footing. They were free to customize from there.
+      </div>
+    </div>
+  </div>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Development</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        I used NY Times' "force-bubble" chart <a href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0">visualization</a> of Obama's 2012 budget as inspiration for development.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width" src="images/nytimes.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        The dynamic gravitational effect was good at conveying resource contention by showing VMs "fighting for the same spot".
+        <br>
+        <br>
+        Data-Viz-Wiz <a href="http://vallandingham.me/">Jim Vallandingham</a> kindly wrote a <a href="http://vallandingham.me/bubble_charts_in_d3.html">tutorial</a> on how to build this effect in D3. This was my starting point.
+        <br>
+        <br>
+        I built Orbit as a multi-tenant cloud service that could connect to and monitor any vSphere instance. This removed the barrier of installation and made it easy for internal teams to dogfood.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width" src="images/orbitDiagram.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        Around this time, my partner, Paulo, joined the prototyping team. He vastly improved the architecture of the server by leveraging threading to simultaneously connect to all physical servers. This made the visualization significantly faster than the standard charts.
+        <br>
+        <br>
+        Paulo also built a detailed drilldown view that provided time series data and recommendations based on Duncan's best practices. We used a mutli-screen UI for this purpose and synced up the two browsers with websockets.
+      </div>
+    </div>
+  </div>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Outcomes</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        We presented Orbit at VMware's internal innovation conference.
+        <br>
+        <br>
+        The project garnered a lot of interest, and showcased how best practices and modern web technologies could be fused together to improve vSphere user experience.
+        <br>
+        <br>
+        I was unable to find a technical team with the bandwidth to continue Orbit as a production-level feature; however, the work caught the eye of vSAN architect, <a href="https://twitter.com/cdickmann">Christian Dickmann</a>.
+        <br>
+        <br>
+        At the time, Christian was developing a monitoring toolkit for vSAN (VMware's next money-maker). Christian followed our philosophy of bundling best practices into the UI. He also used the Heed concept and built on top of our D3 graphing code.
+        <br>
+        <br>
+        The beautiful part of prototyping is introducing new technologies; it was fun to see Christian (a backend engineer) dive into Angular and D3:
+
+        <div  style="text-align:center;">
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Played with JavaScript and D3 today to create pretty cool performance graphs. Extremely nice.</p>&mdash; Christian Dickmann (@cdickmann) <a href="https://twitter.com/cdickmann/status/323620252531429376">April 15, 2013</a></blockquote>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Trying to get a hang of <a href="https://twitter.com/hashtag/angularjs?src=hash">#angularjs</a> and how to use <a href="https://twitter.com/hashtag/d3js?src=hash">#d3js</a> with it. The data binding concept seems good, but my brain doesn&#39;t think this way.</p>&mdash; Christian Dickmann (@cdickmann) <a href="https://twitter.com/cdickmann/status/351407806982787072">June 30, 2013</a></blockquote>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <br>
+        We worked with Christian to flesh out the <a href="http://www.yellow-bricks.com/2013/10/21/configure-virtual-san-observer-monitoring/">vSAN Observer</a>, which shipped as an experimental feature to help admins monitor vSAN.
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 10rem;">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width" src="images/vsan.jpg">
+      </div>
+    </div>
+  </div>
+
+  <section class="additional-projects">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h5 class="secondary-font section-title"> Next:</h5>
+        </div>
+      </div>
+    </div>
+    <a href="/fling.html" style="color:black;">
+      <div class="container">
+        <div class="row product-preview">
+          <div class="six columns">
+            <img class="u-max-full-width card-shadow" src="images/vmwareFlingThumbnail.jpg">
+          </div>
+          <div class="six columns">
+            <h5>VM Resource and Availability Service</h5>
+            <em class="case-study-label">Case Study</em>
+            VMware's first SAAS fling designed to help IT admin's understand their datacenter resiliency through hardware failure simulations.
+          </div>
+        </div>
+      </div>
+      </a>
+      <div class="container">
+        <div class="row">
+          <div class="twelve columns home">
+            <a href="/index.html">home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

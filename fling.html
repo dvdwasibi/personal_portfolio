@@ -1,0 +1,288 @@
+<!doctype html>
+<html class="no-js" lang="en" style="height: 100%;">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VM Resource and Availability Service - David Yang</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700|Merriweather:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+  <body style="height: 100%;">
+
+  <section class="bauhaus-header">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+        <h1>VM Resource and Availability Service</h1>
+        Case Study - VMware
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">The Problem</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        Distributed Resource Scheduling (DRS) and High Availability (HA) are two vSphere features that maintain VM workload resiliency in the face of hardware failure.
+        <br>
+        <br>
+        DRS redistributes VMs across servers to maintain performance, while HA will move and reboot VMs on other servers during hardware failure.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/haDiagram.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        When <em>configured correctly</em>, these are powerful features that allow admins to sleep soundly at night
+        <br>
+        <br>
+        However, it is guesswork on how many servers are needed to maintain <strong>n+1 redundancy</strong> (loss of one node will not impact the system).
+      </div>
+    </div>
+  </div>
+
+  <section class="fling-excerpt">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two exercept">
+          As a vSphere Admin, I need to ensure my workloads are resilient to hardware failures.
+          <br>
+          <br>
+          I also need to know the possible impact of server failures on my VMs.
+        </div>
+        <div class="eight columns offset-by-two exercept-attribute" style="text-align: center;">
+          Use Case
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Research</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        This project was brought to me by engineering leads from the HA team and DRS team.
+        They had been working on building a simulation engine that could run various server failure scenarios, but needed a UI and a clearly defined user workflow.
+        <br>
+        <br>
+        <a href="https://www.vmworld.com/en/index.html">VMworld</a>, VMware's yearly customer conference, was coming up and I wanted user feedback and insight. The simulator engine was still in progress, so I worked with the developers to define the output data, and built a quick prototype populated with fake data.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/vmworld.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        We demoed prototype at HA-focused session.
+        Customer feedback confirmed that admins wanted to primarily ensure <strong>n+1</strong> redundancy. They also wanted to understand the impact of specific servers failing.
+      </div>
+    </div>
+  </div>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Design</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        To be as agile as possible, we decided to create a cloud service to address this use case.
+        Users would upload their vSphere data and we would run the simulation for them.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text research-point">
+        Initial workflow diagram for the service.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/drsWorkflow.jpg">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text research-point">
+        I used simple iconography on the landing page to explain the application.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/fling1.jpg">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text research-point">
+        Users upload their DRS file and select the type of simulation:
+        N+1 or specific servers.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/fling2.jpg">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        <br>
+        My primary challenge was to interpret and visualize the simulator data in a manner that was useful and actionable to admins.
+        I broke it down to three possible situations for each VM:
+      </div>
+      <div class="row">
+        <div class="eight columns offset-by-three explanation-text groundrules">
+          <ol>
+            <li>VM failed to restart (worst-case)</li>
+            <li>VM is running but now has less available resources</li>
+            <li>VM is running and no negative impact (best-case)</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text research-point">
+        I wanted to highlight where VMs fell in these three "buckets". This is the results overview after a simulation:
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/fling3.jpg">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text research-point">
+        Users could drilldown into specific buckets, and see the precise performance impacts to each VM.
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <img class="u-max-full-width card-shadow" src="images/fling4.jpg">
+      </div>
+    </div>
+  </div>
+
+  <section class="design-review1-excerpt">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two exercept">
+          One of the advantages of rapid prototyping is being able to show early and show often.
+          <br>
+          <br>
+          I would take my in-progress work to design reviews and get feedback on everything from margins to copy.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="design-review2-excerpt">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two exercept">
+          I find brutal honesty to be the best policy.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Development</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        I built the web client in Angular and used Flask (python) for the server, which was responsible for taking user data and running the simulator.
+        <br>
+        <br>
+        The other engineers took care of the simulator engine and the underlying infrastructure hosting the application.
+      </div>
+    </div>
+  </div>
+
+  <section class="section-title-section">
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two">
+          <h3 class="secondary-font section-title">Outcomes</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two explanation-text">
+        The product was launched as a VMware <a href="https://labs.vmware.com/flings/vm-resource-and-availability-service">fling</a>, and was the first fling to be offered as a cloud service. <a href="http://hasimulator.vmware.com/html/index.html#/summary">Link to application</a>
+        <br>
+        <br>
+        Ultimately, this project validated our prototyping process. By working with engineering and PM stakeholders early on, I was able to deliver a product that addressed our users' pain points.
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+    <section class="additional-projects">
+      <div class="container">
+        <div class="row">
+          <div class="twelve columns home">
+            <br>
+            <br>
+            <br>I
+            <a href="/index.html">home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

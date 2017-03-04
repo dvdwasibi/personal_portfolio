@@ -1,0 +1,324 @@
+
+.secondary-font{
+  font-family: 'Merriweather', serif;
+}
+
+
+.header {
+  bottom: -50%;
+  text-align: center;
+  min-height: 100%;
+  padding-bottom: 80px;
+  margin-bottom: 80px;
+  margin-top: -80px;
+}
+
+.header .intro-text{
+  margin-top: -15px;
+  font-size: 2rem;
+  color: #777;
+  line-height: 3.5rem;
+}
+
+.section.vessel {
+  border-top: 4px solid rgb(28,42,53);
+  background: rgba(28,42,53,0.1);
+  padding-bottom: 30px;
+}
+
+.section.vmware{
+  border-top: 4px solid rgb(0,152,78);
+  background: rgba(0,152,78,0.1);
+  padding-bottom: 30px;
+}
+
+.explanation-text {
+  font-size: 1.8rem;
+  line-height: 3rem;
+  margin: 10px 0;
+}
+
+.explanation-text.explanation-sm {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.inverse-text-clr{
+  color: #eee;
+}
+
+.card-shadow {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.product-preview{
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.product-preview.dark {
+  background: #eee;
+  border: 1px solid #1EAEDB;
+}
+
+
+.product-preview:hover{
+  background: #eee;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.product-preview.dark:hover{
+  background: #ddd;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.product-preview h5 {
+  margin-bottom: 1rem;
+}
+
+.timeframe {
+  color: #777;
+  font-family: 'Merriweather', serif;
+  text-align: center;
+}
+
+.case-study-label{
+  font-family: 'Merriweather', serif;
+  color: #777;
+  display: block;
+}
+
+section.railroad-excerpt{
+  background-image: url("../images/railroad.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  padding-top: 20rem;
+  padding-bottom: 18rem;
+  margin: 5rem 0;
+}
+
+section.orbit-excerpt{
+  background-image: url("../images/servers.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  padding-top: 20rem;
+  padding-bottom: 18rem;
+  margin: 5rem 0;
+}
+
+
+section.fling-excerpt{
+  background-image: url("../images/fire.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  padding-top: 20rem;
+  padding-bottom: 18rem;
+  margin: 5rem 0;
+}
+
+
+section.design-review1-excerpt{
+  background-image: url("../images/designReview.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  padding-top: 20rem;
+  padding-bottom: 18rem;
+  margin: 5rem 0;
+}
+
+section.design-review2-excerpt{
+  background-image: url("../images/designReview2.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  padding-top: 25rem;
+  padding-bottom: 23rem;
+  margin: -5rem 0 5rem 0;
+}
+
+section.lab-excerpt{
+  background-image: url("../images/labBG.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  padding-top: 20rem;
+  padding-bottom: 18rem;
+  margin: 5rem 0;
+}
+
+section.labnotebook-excerpt{
+  background-image: url("../images/labNotebookBG.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  padding-top: 20rem;
+  padding-bottom: 18rem;
+  margin: 5rem 0;
+}
+
+section.logo-excerpt{
+  background-image: url("../images/logoBG.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  margin: 5rem 0;
+}
+
+section.vesselHQ-excerpt{
+  background-image: url("../images/vesselHQ.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  padding-top: 50rem;
+  padding-bottom: 10rem;
+  margin: 5rem 0;
+}
+
+.exercept {
+  color: white;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+}
+
+
+.exercept-attribute{
+  margin-top: 2rem;
+  text-align: right;
+  color: #ccc;
+}
+
+.groundrules{
+  border-left: 1px solid #1EAEDB;
+  padding-top: 1rem;
+  padding-left: 20px;
+  line-height: 3.5rem;
+}
+
+.pullout-list-sm{
+  font-size: 1.7rem;
+  line-height: 2rem;
+  color: #777;
+}
+
+.research-section{
+  padding-top: 2rem;
+
+}
+
+
+.explanation-text-cutout{
+  font-size: 1.7rem;
+  line-height: 2rem;
+  color: #777;
+}
+
+.research-point{
+  border-left: 1px solid #1EAEDB;
+  margin-top: 4rem;
+  padding: 2rem 0 2rem 20px;
+}
+
+.process-title {
+  margin-top: 10rem;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #1EAEDB;
+  color:  #0A7698;
+}
+
+
+
+.section-title {
+  margin-top: 8rem;
+  margin-bottom: 1rem;
+}
+
+
+section.hive-excerpt{
+  background-image: url("../images/hive.jpg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  margin: 5rem 0;
+}
+
+section.hive-excerpt .exercept{
+  padding-top: 70rem;
+  padding-bottom: 5rem;
+  text-align: center;
+}
+
+section.bauhaus-header{
+  margin-top: 5rem;
+}
+
+section.bauhaus-header h1{
+  margin-bottom: 1rem;
+}
+
+.highlight-text{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0A7698;
+}
+
+.highlight-container{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+section.personal{
+  background: #353535;
+  color: white;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+section.personal .photo{
+  text-align: center;
+}
+
+.user-header{
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.user-info.info-label{
+  float:left;
+}
+
+.user-info.info-text{
+  float:right;
+}
+
+.additional-projects{
+  background: #3E3B38;
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.additional-projects .section-title{
+  color: white;
+  text-align: center;
+}
+
+.additional-projects .home{
+  text-align: center;
+}
+
+.error{
+  border-color: red;
+}
